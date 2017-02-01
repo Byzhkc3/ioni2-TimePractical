@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title text-center>
+      触摸测试
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <h3>下方显示数据</h3>
+        <p *ngIf="!didWin()">触摸两次，长按四次</p>
+        <p *ngIf="didWin()">你赢了</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <p>触摸次数:{{taps}}</p>
+          </ion-item>
+          <ion-item>
+            <p>长按次数:{{pressed}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <app-reset (didReset)="onDidReset($event)"></app-reset>
+    <ion-row>
+      <ion-col
+              style="background-color:lightgreen"
+              text-center
+              (tap)="onTap()">
+        点击此处
+      </ion-col>
+      <ion-col
+              style="background-color:lightgreen"
+              text-center
+              (press)="onPress()">
+        长按此处
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
